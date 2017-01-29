@@ -39,27 +39,27 @@ public class Acao {
         return data;
     }
 
-    public void printprecodata(Date inicial, Date date2){
-        Date data = inicial;
-        Caracteristicas nova;
-        List<Caracteristicas> lista = new ArrayList<>();
-        do{
-            nova = findcar(data);
-            if(nova != null){
-                lista.add(nova);
-            }
-            Calendar c = Calendar.getInstance();
-            c.setTime(data);
-            c.add(Calendar.DATE, 1);
-            data = c.getTime();
-        } while (!data.equals(date2));
-
-        System.out.println(lista.size() + " datas diferentes.");
-
-        for(Caracteristicas car : lista){
-            System.out.println(car.toString());
-        }
-    }
+//    public void printprecodata(Date inicial, Date date2){
+//        Date data = inicial;
+//        Caracteristicas nova;
+//        List<Caracteristicas> lista = new ArrayList<>();
+//        do{
+//            nova = findcar(data);
+//            if(nova != null){
+//                lista.add(nova);
+//            }
+//            Calendar c = Calendar.getInstance();
+//            c.setTime(data);
+//            c.add(Calendar.DATE, 1);
+//            data = c.getTime();
+//        } while (!data.equals(date2));
+//
+//        System.out.println(lista.size() + " datas diferentes.");
+//
+//        for(Caracteristicas car : lista){
+//            System.out.println(car.toString());
+//        }
+//    }
 
     private Caracteristicas findcar(Date data){
         Caracteristicas nova = null;
@@ -86,10 +86,11 @@ public class Acao {
             c.setTime(data);
             c.add(Calendar.DATE, 1);
             data = c.getTime();
-        } while (!data.equals(fim));
+        } while (!data.equals(fim) && data.before(fim));
 
         return lista;
     }
+
 
 
 }
