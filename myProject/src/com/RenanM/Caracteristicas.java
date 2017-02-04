@@ -32,7 +32,7 @@ public class Caracteristicas {
                 "Low: " + low + "\n" +
                 "Close: " + close + "\n" +
                 "Volume: " + volume + "\n" +
-                "Adj Close: " + adjClose + "\n";
+                "Adj.Close: " + adjClose + "\n";
     }
 
     public Date getDate() {

@@ -1,0 +1,99 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+
+
+<BorderPane fx:id="mainBP" fx:controller="com.RenanM.Controller" stylesheets="@estilo.css"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <MenuBar>
+            <Menu text="Ajuda">
+                <items>
+                    <MenuItem text="Instruções" onAction="#instrucoes"/>
+                    <MenuItem text="Lista de simbolos" onAction="#print"/>
+                    <MenuItem text="Reiniciar" onAction="#reiniciar"/>
+                </items>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <left>
+        <VBox>
+            <Label text="Digite o simbolo: "/>
+            <TextField fx:id="Entradasimbolo" onKeyReleased="#Caixavazia">
+                <tooltip>
+                    <Tooltip text="Precisa ser em letra maiuscula"/>
+                </tooltip>
+            </TextField>
+            <Button fx:id="Botaoprocura" onAction="#Clicarbotao" text="Selecionar" prefWidth="200" alignment="CENTER"/>
+            <Label text="Data inicial: " />
+            <DatePicker fx:id="Datainicial" onAction="#datas" prefWidth="200"/>
+            <Label text="Data inicial encontrada: "/>
+            <Label fx:id="datainicialencontrada" id="inicio"/>
+            <Label text="Data final: " />
+            <DatePicker fx:id="Datafinal" onAction="#datas" prefWidth="200"/>
+            <Label text="Data final encontrada: "/>
+            <Label fx:id="datafinalencontrada" id="fim"/>
+            <Button text="Tabela" fx:id="Botaofinal" onAction="#InserirTabela" prefWidth="200" alignment="BOTTOM_CENTER"/>
+            <Label text="Digite o indice de uma coluna:"/>
+            <TextField fx:id="Escolha" onKeyReleased="#Caixavazia2">
+                <tooltip>
+                    <Tooltip text="ex: Data por ABERTURA"/>
+                </tooltip>
+            </TextField>
+            <Button text="Produzir grafico" onAction="#Graficoescolha" fx:id="BotaoGrafico" prefWidth="200"/>
+        </VBox>
+    </left>
+    <center>
+        <TableView fx:id="TabelaAcao">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+            <columns>
+                <TableColumn text="Data">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="date"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Abertura">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="open"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Alta">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="high"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Baixa">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="low"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Fechar">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="close"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Volume">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="volume"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Ajuste">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="adjClose"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox>
+            <Label fx:id="Valorencontrado" id="Marca" alignment="CENTER" style="-fx-border-color: grey" prefWidth="1600" />
+        </HBox>
+    </bottom>
+</BorderPane>
